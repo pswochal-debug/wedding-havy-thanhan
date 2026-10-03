@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hà Vy &amp; Thanh An — 10.10.2026</title>
+<meta name="description" content="Website sự kiện đám cưới Hà Vy & Thanh An, ngày 10.10.2026. Câu chuyện, lịch trình, RSVP và nhiều hơn nữa.">
+<meta property="og:title" content="Hà Vy & Thanh An — 10.10.2026">
+<meta property="og:description" content="Chúng tôi sắp kết hôn — và muốn bạn ở đó.">
+<meta property="og:type" content="website">
+<!-- Thêm ảnh chia sẻ (sau khi đưa site lên host): <meta property="og:image" content="https://TEN-MIEN/images/og.jpg"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="draft" class="draft" hidden>Bản nháp — giờ giấc &amp; địa điểm đang được cập nhật.</div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand" id="brand"></a>
+  <button class="nav__toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
+  <nav class="nav__links" id="navLinks">
+    <a href="#story">Câu chuyện</a>
+    <a href="#day">Ngày cưới</a>
+    <a href="#dresscode">Dress code</a>
+    <a href="#gallery">Hình ảnh</a>
+    <a href="#songs">Bài hát</a>
+    <a href="#qa">Q&amp;A</a>
+    <a href="#rsvp" class="nav__cta">RSVP</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" id="heroBg"></div>
+    <div class="hero__inner">
+      <p class="eyebrow reveal">Lời mời · Wedding</p>
+      <h1 class="hero__names reveal" id="heroNames"></h1>
+      <p class="hero__date reveal" id="heroDate"></p>
+      <p class="hero__tag reveal" id="heroTag"></p>
+      <div class="countdown reveal" id="countdown" aria-live="off"></div>
+      <a href="#rsvp" class="btn reveal">Xác nhận tham dự</a>
+    </div>
+    <a href="#story" class="hero__scroll" aria-label="Cuộn xuống"><span></span></a>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" id="story">
+    <div class="wrap">
+      <p class="eyebrow reveal">Chương I</p>
+      <h2 class="h2 reveal">Our Story</h2>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+
+  <!-- THE DAY -->
+  <section class="section section--tint" id="day">
+    <div class="wrap">
+      <p class="eyebrow reveal">Chương II</p>
+      <h2 class="h2 reveal">Ngày hôm ấy</h2>
+      <div class="day">
+        <ol class="schedule" id="schedule"></ol>
+        <aside class="venue reveal">
+          <h3 class="h3">Địa điểm</h3>
+          <p class="venue__name" id="venueName"></p>
+          <p id="venueAddr"></p>
+          <ul class="notes" id="venueNotes"></ul>
+          <div class="venue__actions">
+            <a class="btn btn--ghost" id="mapsLink" target="_blank" rel="noopener">Chỉ đường</a>
+          </div>
+          <h3 class="h3 mt">Lưu vào lịch</h3>
+          <div class="venue__actions">
+            <button class="btn btn--ghost" id="icsBtn" type="button">Apple / Outlook (.ics)</button>
+            <a class="btn btn--ghost" id="gcalLink" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section class="section" id="dresscode">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow reveal">Chương III</p>
+      <h2 class="h2 reveal">Dress code</h2>
+      <p class="lead reveal" id="dcTitle"></p>
+      <p class="reveal" id="dcText"></p>
+      <ul class="palette reveal" id="palette"></ul>
+      <ul class="notes reveal" id="dcTips"></ul>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section section--tint" id="gallery">
+    <div class="wrap">
+      <p class="eyebrow reveal">Chương IV</p>
+      <h2 class="h2 reveal">Hình ảnh</h2>
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section" id="rsvp">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow reveal">Chương V</p>
+      <h2 class="h2 reveal">RSVP</h2>
+      <p class="lead reveal" id="rsvpIntro"></p>
+      <div id="rsvpClosed" class="notice" hidden></div>
+      <div id="rsvpDone" class="card" hidden></div>
+      <form id="rsvpForm" class="form card reveal" novalidate>
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="field">
+          <span>Họ và tên *</span>
+          <input type="text" name="name" required maxlength="80" autocomplete="name">
+        </label>
+        <fieldset class="field">
+          <legend>Bạn sẽ tham dự chứ? *</legend>
+          <div class="choice">
+            <label><input type="radio" name="attending" value="yes" required><span>Có, mình sẽ đến</span></label>
+            <label><input type="radio" name="attending" value="no"><span>Rất tiếc, mình không đến được</span></label>
+          </div>
+        </fieldset>
+        <div id="yesFields">
+          <label class="field">
+            <span>Tổng số người đi cùng (tính cả bạn)</span>
+            <input type="number" name="guests" min="1" max="10" value="1" inputmode="numeric">
+          </label>
+          <label class="field">
+            <span>Tên những người đi cùng</span>
+            <input type="text" name="companions" maxlength="200" placeholder="Ví dụ: Minh, bé Bơ (3 tuổi)">
+          </label>
+          <label class="field">
+            <span>Ăn uống: ăn chay / dị ứng / lưu ý</span>
+            <input type="text" name="diet" maxlength="200" placeholder="Để trống nếu không có">
+          </label>
+        </div>
+        <label class="field">
+          <span>Lời nhắn cho cô dâu &amp; chú rể</span>
+          <textarea name="message" rows="3" maxlength="500"></textarea>
+        </label>
+        <p class="error" id="rsvpError" role="alert" hidden></p>
+        <button class="btn" type="submit" id="rsvpSubmit">Gửi xác nhận</button>
+        <p class="small">Thông tin chỉ dành cho cô dâu &amp; chú rể, không hiển thị công khai.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- SONGS -->
+  <section class="section section--tint" id="songs">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow reveal">Chương VI</p>
+      <h2 class="h2 reveal">Bài hát của bạn</h2>
+      <p class="lead reveal">Hãy gợi ý một bài khiến bạn muốn bước ra sàn nhảy — hoặc muốn lặng đi một chút.</p>
+      <form id="songForm" class="form card reveal" novalidate>
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="row">
+          <label class="field"><span>Tên bài hát *</span><input type="text" name="title" required maxlength="100"></label>
+          <label class="field"><span>Nghệ sĩ *</span><input type="text" name="artist" required maxlength="100"></label>
+        </div>
+        <label class="field"><span>Tên bạn (tuỳ chọn)</span><input type="text" name="by" maxlength="80"></label>
+        <p class="error" id="songError" role="alert" hidden></p>
+        <button class="btn" type="submit">Gửi bài hát</button>
+      </form>
+      <ul class="mylist" id="mySongs" aria-label="Các bài bạn đã gửi"></ul>
+    </div>
+  </section>
+
+  <!-- Q&A -->
+  <section class="section" id="qa">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow reveal">Chương VII</p>
+      <h2 class="h2 reveal">Hỏi &amp; đáp</h2>
+      <div class="faq reveal" id="faqList"></div>
+      <h3 class="h3 mt reveal">Bạn còn câu hỏi khác?</h3>
+      <form id="qForm" class="form card reveal" novalidate>
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="field"><span>Câu hỏi *</span><textarea name="text" rows="3" required maxlength="400"></textarea></label>
+        <label class="field"><span>Tên bạn (tuỳ chọn)</span><input type="text" name="by" maxlength="80"></label>
+        <p class="error" id="qError" role="alert" hidden></p>
+        <button class="btn" type="submit">Gửi câu hỏi</button>
+        <p class="small">Câu hỏi được trả lời sẽ xuất hiện ở danh sách phía trên.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="footer__names" id="footNames"></p>
+  <p>Cảm ơn bạn đã dành thời gian cho chúng tôi.</p>
+  <p class="small" id="footContact"></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="lightbox" id="lightbox" hidden><button class="lightbox__close" aria-label="Đóng">×</button><div class="lightbox__img" id="lightboxImg"></div></div>
+
+<script src="content.js"></script>
+<script src="store.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
